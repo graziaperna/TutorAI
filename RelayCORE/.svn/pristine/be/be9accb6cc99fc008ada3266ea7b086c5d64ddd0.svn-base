@@ -1,0 +1,1 @@
+rule(1, [bravo(X)], and([not_exists(bravo(X)), alto(X), giovane(X), occhi_az(X), capelli(X)]), 15, 1).

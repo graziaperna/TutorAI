@@ -1,0 +1,5 @@
+useService=false
+serviceURL=http://127.0.0.1:8084/RPC3
+
+# importMode e' uguale a 'jar' (se RelayCORE viene importato come JAR) oppure 'project' (se RelayCORE viene importato come progetto)
+importMode=project

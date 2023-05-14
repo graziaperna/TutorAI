@@ -1,0 +1,10 @@
+au(settanta).
+au(uno).
+au(tre).
+au(venticinque).
+au(cinquantotto).
+au(settantaquattro).
+au(cinque).
+au(ottanta).
+au(due).
+au(ventisei).

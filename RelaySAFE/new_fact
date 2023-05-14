@@ -1,0 +1,2 @@
+:- dynamic (fact/3).
+:- dynamic (rule/5).

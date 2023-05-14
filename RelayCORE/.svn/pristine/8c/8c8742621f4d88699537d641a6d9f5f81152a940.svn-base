@@ -1,0 +1,13 @@
+:- dynamic (fact/3).
+:- dynamic (rule/5).
+fact(1,presenta(a_b,eta_infantile_compresa_tra_0_e_2_anni),0).
+fact(2,presenta(a_b,eta_compresa_tra_3_e_11_anni),0).
+fact(3,presenta(a_b,eta_a_rischio_compresa_tra_i_12_e_i_25_anni),1).
+fact(4,presenta(a_b,eta_superiore_ai_25_anni),0).
+fact(5,presenta(a_b,peso_regolare_attraverso_l_indice_di_massa_corporea_(BMI)),1).
+fact(6,presenta(a_b,sovrappeso_attraverso_l_indice_di_massa_corporea_(BMI)),0).
+fact(7,presenta(a_b,sottopeso_attraverso_l_indice_di_massa_corporea_(BMI)),0).
+fact(8,presenta(a_b,un_indice_di_massa_corporea_BMI_minore_di_15),0).
+fact(9,presenta(a_b,un_indice_di_massa_corporea_BMI_compreso_tra_15_e_15_99),0).
+fact(10,presenta(a_b,un_indice_di_massa_corporea_BMI_compreso_tra_16_e_16_99),0).
+fact(11,presenta(a_b,un_indice_di_massa_corporea_BMI_maggiore_o_uguale_a_17),1).
