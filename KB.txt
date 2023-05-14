@@ -38,6 +38,8 @@ rule(13,metodologia(X,'Problem solving e simulazione'),and(),1,1).
 rule(36,is(X,doc_multimediale),and([is(X, multimediale), libri(X, Ebook)]),1,1).
 rule(37,is(X,correlati),and([is(X, studio_analitico), is(X, documento)]),1,1).
 rule(38,is(X,spiegazione_efficace),and( [ is(X, doc_supporto), or( [ tipo_libri(X, Audiolibri), podcast_e_musica(X, Vero) ] ) ] ),1,1).
+rule(39,is(X,video_dimostrativo),and([is(X, studio_pratico), is(X, multimediale)]),1,1).
+rule(40,is(X,studio_approfondito),and([is(X, studio_analitico), is(X, documento), is(X, multimediale)]),1,1).
 
 /* Definitions of intermediate rules */
 rule(14,is(X,multimediale),and([podcast_e_musica(X, Vero)]),1,1).
