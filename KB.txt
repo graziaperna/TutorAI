@@ -1,69 +1,69 @@
 :- prolog_flag(unknown,_,fail).
 
-askablemenu(colori(X,Y), ‘Quando studi tendi a sottolineare i concetti fondamentali con vari colori?',[Vero, Falso],colori,X,Y).
-askablemenu(domande_topic(X,Y), ‘Al termine dello studio chiedi ad altre persone di porti delle domande sull’argomento studiato?',[Si, No, A_volte],domande_topic,X,Y).
-askablemenu(tipo_materie(X,Y), 'Preferisci materie umanistiche o scientifiche?',[Umanistiche, Scientifiche],tipo_materie, X,Y).
-askablemenu(podcast_e_musica(X,Y), ‘Ascolti podcast e musica?',[Vero,Falso],podcast_e_musica,X,Y).
-askablemenu(interventi(X,Y), ‘Credi che siano utili interventi di specialisti?'[Vero,Falso],interventi,X,Y).
-askablemenu(approfondimento(X,Y), ‘Quando studi un argomento di solito sei interessato ad approfondire tale argomento?',[Si, No, A_volte],approfondimento,X,Y).
-askablemenu(interazione(X,Y), 'Durante la spiegazione del docente sei propenso a interagire con lui e a fare domande?',[Vero,Falso],interazione,X,Y).
-askablemenu(verifiche(X,Y), 'Preferisci le verifiche settimanali o semestrali?',[Settimanali,Semestrali],verifiche,X,Y).
-askablemenu(libri(X,Y), ‘Preferisci i libri cartacei o gli ebook?',[Cartacei, Ebook],libri,X,Y).
-askablemenu(tipo_libri(X,Y), ‘Preferisci libri cartacei/documenti o audiolibri?,[Documenti,Audiolibri],tipo_libri,X,Y).
-askablemenu(esercizi(X,Y), ‘Durante lo svolgimento degli esercizi in classe preferisci che li svolga il docente o gli studenti?',[Docente, Studenti],esercizi,X,Y).
+askablemenu(colors(X,Y), ‘Quando studi tendi a sottolineare i concetti fondamentali con vari colors?',[Vero, Falso],colors,X,Y).
+askablemenu(questions_topic(X,Y), ‘Al termine dello studio chiedi ad altre persone di porti delle domande sull’argomento studiato?',[Si, No, A_volte],questions_topic,X,Y).
+askablemenu(subject_type(X,Y), 'Preferisci materie umanistiche o scientifiche?',[Umanistiche, Scientifiche],subject_type, X,Y).
+askablemenu(audio(X,Y), ‘Ascolti podcast e musica?',[Vero,Falso],audio,X,Y).
+askablemenu(experts(X,Y), ‘Credi che siano utili experts di specialisti?'[Vero,Falso],experts,X,Y).
+askablemenu(deepening(X,Y), ‘Quando studi un argomento di solito sei interessato ad approfondire tale argomento?',[Si, No, A_volte],deepening,X,Y).
+askablemenu(interaction(X,Y), 'Durante la spiegazione del docente sei propenso a interagire con lui e a fare domande?',[Vero,Falso],interaction,X,Y).
+askablemenu(period_test(X,Y), 'Preferisci le period_test settimanali o semestrali?',[Settimanali,Semestrali],period_test,X,Y).
+askablemenu(book(X,Y), ‘Preferisci i book cartacei o gli ebook?',[Cartacei, Ebook],book,X,Y).
+askablemenu(book_type(X,Y), ‘Preferisci book cartacei/documenti o audiobook?,[Documenti,Audiobook],book_type,X,Y).
+askablemenu(exercise(X,Y), ‘Durante lo svolgimento degli exercise in classe preferisci che li svolga il docente o gli studenti?',[Docente, Studenti],exercise,X,Y).
 askablemenu(computer(X,Y), ‘Quanto spesso usi il computer?',[Ogni_giorno, Ogni_tre_giorni, nessuno_tra_queste],computer,X,Y).
-askablemenu(indovinello(X,Y), ‘Il cadavere di una donna è ancora riverso sul marciapiede. Ci sono quattro uomini indiziati per l’omicidio. Alle prime domande della polizia rispondono:
+askablemenu(enigma(X,Y), ‘Il cadavere di una donna è ancora riverso sul marciapiede. Ci sono quattro uomini indiziati per l’omicidio. Alle prime domande della polizia rispondono:
 ANTONIO: “Ho visto Carlo e Dario sul luogo del delitto, quindi uno di loro è l’assassino.”
 BERNARDO: “Non sono stato io.”
 CARLO: “E’ stato Dario. L’ho visto sparare!”
 DARIO: “E’ stato Bernardo. L’ho visto mentre fuggiva.”
-Se solo l’assassino ha mentito, chi è il colpevole?',[Antonio, Bernardo, Carlo, Dario],indovinello,X,Y).
-askablemenu(appunti(X,Y), ‘Durante la lezione, preferisci seguire attivamente ciò che dice l'insegnate o prendere appunti?',[Seguire_attivamente, Prendere_appunti],appunti,X,Y).
-askablemenu(film(X,Y), ‘Ti piacciono i film tratti da storie/situazioni vere?',[Si, No],film,X,Y).
+Se solo l’assassino ha mentito, chi è il colpevole?',[Antonio, Bernardo, Carlo, Dario],enigma,X,Y).
+askablemenu(notes(X,Y), ‘Durante la lezione, preferisci seguire attivamente ciò che dice l'insegnate o prendere notes?',[Seguire_attivamente, Prendere_notes],notes,X,Y).
+askablemenu(movie(X,Y), ‘Ti piacciono i movie tratti da storie/situazioni vere?',[Si, No],movie,X,Y).
 
-rule(1,metodologia(X,'Video e approccio tutoriale'),and([is(X,video_dimostrativo), is(X,spiegazione_efficace)]),1,1).
-rule(2,metodologia(X,'Video e simulazione'),and([is(X,video_dimostrativo), is(X,studio_pratico), not([is(X,studio_guidato)])]),1,1).
-rule(3,metodologia(X,'Audio e approccio tutoriale'),and([is(X,audio_dimostrativo), is(X,spiegazione_efficace)]),1,1).
-rule(4,metodologia(X,'Audio e simulazione'),and([and([is(X,audio_dimostrativo), is(X,studio_pratico), not([is(X,studio_guidato)])]),1,1).
-rule(5,metodologia(X,'Video e dimostrazione'),and([is(X,video_dimostrativo), is(X,studio_guidato), is(X,studio_pratico)]),1,1).
-rule(6,metodologia(X,'Mappe e approccio tutoriale'),and([is(X,correlati), is(X,spiegazione_efficace)]),1,1).
-rule(7,metodologia(X,'Libri cartacei e approccio tutoriale'),and([is(X,documento), is(X,spiegazione_efficace), not([is(X,doc_multimediale)])]),1,1).
-rule(8,metodologia(X,'Documenti digitali e dimostrazione'),and([is(X,documento), is(X,doc_multimediale), is(X,studio_guidato), is(X,studio_pratico)]),1,1).
-rule(9,metodologia(X,'Documenti digitali e approccio tutoriale'),and([is(X,documento), is(X,doc_multimediale), is(X,spiegazione_efficace)]),1,1).
-rule(10,metodologia(X,'Slide e approccio tutoriale'),and([is(X,doc_multimediale), is(X,spiegazione_efficace)]),1,1).
-rule(11,metodologia(X,'Slide e dimostrazione'),and([is(X,doc_multimediale), is(X,studio_guidato), is(X,studio_pratico)]),1,1).
-rule(12,metodologia(X,'Interdisciplinarita' e simulazione'),and([is(X,studio_approfondito), is(X,studio_pratico), not([is(X,studio_guidato)])]),1,1).
-rule(13,metodologia(X,'Problem solving e simulazione'),and([is(X,studio_analitico), is(X,studio_pratico), not([is(X,studio_guidato)])]),1,1).
+rule(1,metodologia(X,'Video e approccio tutoriale'),and([is(X,video_explanation), is(X,test_explanation)]),1,1).
+rule(2,metodologia(X,'Video e simulazione'),and([is(X,video_explanation), is(X,practical_learning), not([is(X,guided_learning)])]),1,1).
+rule(3,metodologia(X,'Audio e approccio tutoriale'),and([is(X,audio_explanation), is(X,test_explanation)]),1,1).
+rule(4,metodologia(X,'Audio e simulazione'),and([and([is(X,audio_explanation), is(X,practical_learning), not([is(X,guided_learning)])]),1,1).
+rule(5,metodologia(X,'Video e dimostrazione'),and([is(X,video_explanation), is(X,guided_learning), is(X,practical_learning)]),1,1).
+rule(6,metodologia(X,'Mappe e approccio tutoriale'),and([is(X,key_doc), is(X,test_explanation)]),1,1).
+rule(7,metodologia(X,'book cartacei e approccio tutoriale'),and([is(X,document), is(X,test_explanation), not([is(X,multimedia_doc)])]),1,1).
+rule(8,metodologia(X,'Documenti digitali e dimostrazione'),and([is(X,document), is(X,multimedia_doc), is(X,guided_learning), is(X,practical_learning)]),1,1).
+rule(9,metodologia(X,'Documenti digitali e approccio tutoriale'),and([is(X,document), is(X,multimedia_doc), is(X,test_explanation)]),1,1).
+rule(10,metodologia(X,'Slide e approccio tutoriale'),and([is(X,multimedia_doc), is(X,test_explanation)]),1,1).
+rule(11,metodologia(X,'Slide e dimostrazione'),and([is(X,multimedia_doc), is(X,guided_learning), is(X,practical_learning)]),1,1).
+rule(12,metodologia(X,'Interdisciplinarita' e simulazione'),and([is(X,deep_learning), is(X,practical_learning), not([is(X,guided_learning)])]),1,1).
+rule(13,metodologia(X,'Problem solving e simulazione'),and([is(X,analitic_learning), is(X,practical_learning), not([is(X,guided_learning)])]),1,1).
 
-rule(14,is(X,doc_multimediale),and([is(X, multimediale), libri(X,Ebook)]),1,1).
-rule(15,is(X,correlati),and([is(X, studio_analitico), is(X, documento)]),1,1).
-rule(16,is(X,spiegazione_efficace),and( [ is(X, doc_supporto), or( [ tipo_libri(X, Audiolibri), podcast_e_musica(X, Vero) ] ) ] ),1,1).
-rule(17,is(X,video_dimostrativo),and([is(X, studio_pratico), is(X, multimediale)]),1,1).
-rule(18,is(X,studio_approfondito),and([is(X, studio_analitico), is(X, documento), is(X, multimediale)]),1,1).
-rule(19,is(X,audio_dimostrativo),and([is(X, multimediale), is(X, studio_guidato)]),1,1).
+rule(14,is(X,multimedia_doc),and([is(X, multimedia), book(X,Ebook)]),1,1).
+rule(15,is(X,key_doc),and([is(X, analitic_learning), is(X, document)]),1,1).
+rule(16,is(X,test_explanation),and( [ is(X, sample_doc), or( [ book_type(X, Audiobook), audio(X, Vero) ] ) ] ),1,1).
+rule(17,is(X,video_explanation),and([is(X, practical_learning), is(X, multimedia)]),1,1).
+rule(18,is(X,deep_learning),and([is(X, analitic_learning), is(X, document), is(X, multimedia)]),1,1).
+rule(19,is(X,audio_explanation),and([is(X, multimedia), is(X, guided_learning)]),1,1).
 
 /* Definitions of intermediate rules */
-rule(20,is(X,multimediale),and([podcast_e_musica(X, Vero)]),1,1).
-rule(21,is(X,multimediale),and([tipo_libri(X, Audiolibri)]),1,1).
-rule(22,is(X,multimediale),and([film(X, Si)]),1,1).
-rule(23,is(X,documento),and([tipo_libri(X, Documenti)]),1,1).
-rule(24,is(X,documento),and([tipo_materie(X, Umanistiche)]),1,1).
-rule(25,is(X,documento),or([approfondimento(X, Si)], approfondimento(X, A_volte)]),1,1).
-rule(26,is(X,doc_supporto),and([colori(X, Vero)]),1,1).
-rule(27,is(X,doc_supporto),and([appunti(X, Prendere_appunti)]),1,1).
-rule(28,is(X,studio_pratico),and([verifiche(X, Settimanali)]),1,1).
-rule(29,is(X,studio_pratico),and([esercizi(X, Studenti)]),1,1).
-rule(30,is(X,studio_pratico),and([tipo_materie(X, Scientifiche)]),1,1).
-rule(31,is(X,studio_pratico),and([interventi(X, Vero)]),1,1).
-rule(32,is(X,studio_pratico),and([verifiche(X, Settimanali)]),1,1).
-rule(33,is(X,studio_guidato),and([esercizi(X, Studenti)]),1,1).
-rule(34,is(X,studio_guidato),and([tipo_materie(X, Scientifiche)]),1,1).
-rule(35,is(X,studio_guidato),and([interventi(X, Vero)]),1,1).
-rule(36,is(X,studio_guidato),or([domande_topic(X, Si)], domande_topic(X, A_volte)]),1,1).
-rule(37,is(X,studio_guidato),and([indovinello(X, Dario)]),1,1).
-rule(38,is(X,studio_guidato),and([interazione(X, Vero)]),1,1).
-rule(39,is(X,studio_analitico),and([indovinello(X, Dario)]),1,1).
-rule(40,is(X,studio_analitico),or([approfondimento(X, Si)], approfondimento(X, A_volte)]),1,1).
+rule(20,is(X,multimedia),and([audio(X, Vero)]),1,1).
+rule(21,is(X,multimedia),and([book_type(X, Audiobook)]),1,1).
+rule(22,is(X,multimedia),and([movie(X, Si)]),1,1).
+rule(23,is(X,document),and([book_type(X, Documenti)]),1,1).
+rule(24,is(X,document),and([subject_type(X, Umanistiche)]),1,1).
+rule(25,is(X,document),or([deepening(X, Si)], deepening(X, A_volte)]),1,1).
+rule(26,is(X,sample_doc),and([colors(X, Vero)]),1,1).
+rule(27,is(X,sample_doc),and([notes(X, Prendere_notes)]),1,1).
+rule(28,is(X,practical_learning),and([period_test(X, Settimanali)]),1,1).
+rule(29,is(X,practical_learning),and([exercise(X, Studenti)]),1,1).
+rule(30,is(X,practical_learning),and([subject_type(X, Scientifiche)]),1,1).
+rule(31,is(X,practical_learning),and([experts(X, Vero)]),1,1).
+rule(32,is(X,practical_learning),and([period_test(X, Settimanali)]),1,1).
+rule(33,is(X,guided_learning),and([exercise(X, Studenti)]),1,1).
+rule(34,is(X,guided_learning),and([subject_type(X, Scientifiche)]),1,1).
+rule(35,is(X,guided_learning),and([experts(X, Vero)]),1,1).
+rule(36,is(X,guided_learning),or([questions_topic(X, Si)], questions_topic(X, A_volte)]),1,1).
+rule(37,is(X,guided_learning),and([enigma(X, Dario)]),1,1).
+rule(38,is(X,guided_learning),and([interaction(X, Vero)]),1,1).
+rule(39,is(X,analitic_learning),and([enigma(X, Dario)]),1,1).
+rule(40,is(X,analitic_learning),or([deepening(X, Si)], deepening(X, A_volte)]),1,1).
 
 
 
