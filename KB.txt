@@ -21,11 +21,11 @@ Se solo l’assassino ha mentito, chi è il colpevole?',[Antonio, Bernardo, Carl
 askablemenu(appunti(X,Y), ‘Durante la lezione, preferisci seguire attivamente ciò che dice l'insegnate o prendere appunti?',[Seguire_attivamente, Prendere_appunti],appunti,X,Y).
 askablemenu(film(X,Y), ‘Ti piacciono i film tratti da storie/situazioni vere?',[Si, No],film,X,Y).
 
-rule(1,metodologia(X,'Video e approccio tutoriale'),and(),1,1).
-rule(2,metodologia(X,'Video e simulazione'),and(),1,1).
-rule(3,metodologia(X,'Audio e approccio tutoriale'),and(),1,1).
-rule(4,metodologia(X,'Audio e simulazione'),and(),1,1).
-rule(5,metodologia(X,'Audio e dimostrazione'),and(),1,1).
+rule(1,metodologia(X,'Video e approccio tutoriale'),and([is(X,video_dimostrativo), is(X,spiegazione_efficace)]),1,1).
+rule(2,metodologia(X,'Video e simulazione'),and([is(X,video_dimostrativo), is(X,studio_analitico), not([is(X,studio_approfondito)])]),1,1).
+rule(3,metodologia(X,'Audio e approccio tutoriale'),and([is(X,multimediale), is(X,spiegazione_efficace), not([is(X,video_dimostrativo)])]),1,1).
+rule(4,metodologia(X,'Audio e simulazione'),and([is(X,multimediale), not([is(X,video_dimostrativo)]), is(X,studio_analitico), not([is(X,studio_approfondito)])]),1,1).
+rule(5,metodologia(X,'Video e dimostrazione'),and([is(X,dimostrazione), is(X,studio_guidato), not([is(X,spiegazione_efficace)]), not([is(X,studio_analitico)]), not([is(X,studio_approfondito)])]),1,1).
 rule(6,metodologia(X,'Mappe e approccio tutoriale'),and(),1,1).
 rule(7,metodologia(X,'Cartacei e approccio tutoriale'),and(),1,1).
 rule(8,metodologia(X,'Digitali e dimostrazione'),and(),1,1).
@@ -40,6 +40,7 @@ rule(37,is(X,correlati),and([is(X, studio_analitico), is(X, documento)]),1,1).
 rule(38,is(X,spiegazione_efficace),and( [ is(X, doc_supporto), or( [ tipo_libri(X, Audiolibri), podcast_e_musica(X, Vero) ] ) ] ),1,1).
 rule(39,is(X,video_dimostrativo),and([is(X, studio_pratico), is(X, multimediale)]),1,1).
 rule(40,is(X,studio_approfondito),and([is(X, studio_analitico), is(X, documento), is(X, multimediale)]),1,1).
+rule(41,is(X,dimostrazione),and([is(X, studio_guidato), is(X, studio_pratico), is(X, multimediale)]),1,1).
 
 /* Definitions of intermediate rules */
 rule(14,is(X,multimediale),and([podcast_e_musica(X, Vero)]),1,1).
