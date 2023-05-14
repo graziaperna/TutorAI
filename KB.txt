@@ -1,0 +1,71 @@
+:- prolog_flag(unknown,_,fail).
+
+askablemenu(colori(X,Y), ‘Quando studi tendi a sottolineare i concetti fondamentali con vari colori?',[Vero, Falso],colori,X,Y).
+askablemenu(domande_topic(X,Y), ‘Al termine dello studio chiedi ad altre persone di porti delle domande sull’argomento studiato?',[Si, No, A_volte],domande_topic,X,Y).
+askablemenu(tipo_materie(X,Y), 'Preferisci materie umanistiche o scientifiche?',[Umanistiche, Scientifiche],tipo_materie, X,Y).
+askablemenu(podcast_e_musica(X,Y), ‘Ascolti podcast e musica?',[Vero,Falso],podcast_e_musica,X,Y).
+askablemenu(interventi(X,Y), ‘Credi che siano utili interventi di specialisti?'[Vero,Falso],interventi,X,Y).
+askablemenu(approfondimento(X,Y), ‘Quando studi un argomento di solito sei interessato ad approfondire tale argomento?',[Si, No, A_volte],approfondimento,X,Y).
+askablemenu(interazione(X,Y), 'Durante la spiegazione del docente sei propenso a interagire con lui e a fare domande?',[Vero,Falso],interazione,X,Y).
+askablemenu(verifiche(X,Y), 'Preferisci le verifiche settimanali o semestrali?',[Settimanali,Semestrali],verifiche,X,Y).
+askablemenu(libri(X,Y), ‘Preferisci i libri cartacei o gli ebook?',[Cartacei, Ebook],libri,X,Y).
+askablemenu(tipo_libri(X,Y), ‘Preferisci libri cartacei/documenti o audiolibri?,[Documenti,Audiolibri],tipo_libri,X,Y).
+askablemenu(esercizi(X,Y), ‘Durante lo svolgimento degli esercizi in classe preferisci che li svolga il docente o gli studenti?',[Docente, Studenti],esercizi,X,Y).
+askablemenu(computer(X,Y), ‘Quanto spesso usi il computer?',[Ogni_giorno, Ogni_tre_giorni, nessuno_tra_queste],computer,X,Y).
+askablemenu(indovinello(X,Y), ‘Il cadavere di una donna è ancora riverso sul marciapiede. Ci sono quattro uomini indiziati per l’omicidio. Alle prime domande della polizia rispondono:
+ANTONIO: “Ho visto Carlo e Dario sul luogo del delitto, quindi uno di loro è l’assassino.”
+BERNARDO: “Non sono stato io.”
+CARLO: “E’ stato Dario. L’ho visto sparare!”
+DARIO: “E’ stato Bernardo. L’ho visto mentre fuggiva.”
+Se solo l’assassino ha mentito, chi è il colpevole?',[Antonio, Bernardo, Carlo, Dario],indovinello,X,Y).
+askablemenu(appunti(X,Y), ‘Durante la lezione, preferisci seguire attivamente ciò che dice l'insegnate o prendere appunti?',[Seguire_attivamente, Prendere_appunti],appunti,X,Y).
+askablemenu(film(X,Y), ‘Ti piacciono i film tratti da storie/situazioni vere?',[Si, No],film,X,Y).
+
+rule(1,metodologia(X,'Video e approccio tutoriale'),and(),1,1).
+rule(2,metodologia(X,'Video e simulazione'),and(),1,1).
+rule(3,metodologia(X,'Audio e approccio tutoriale'),and(),1,1).
+rule(4,metodologia(X,'Audio e simulazione'),and(),1,1).
+rule(5,metodologia(X,'Audio e dimostrazione'),and(),1,1).
+rule(6,metodologia(X,'Mappe e approccio tutoriale'),and(),1,1).
+rule(7,metodologia(X,'Cartacei e approccio tutoriale'),and(),1,1).
+rule(8,metodologia(X,'Digitali e dimostrazione'),and(),1,1).
+rule(9,metodologia(X,'Digitali e approccio tutoriale'),and(),1,1).
+rule(10,metodologia(X,'Slide e approccio tutoriale'),and(),1,1).
+rule(11,metodologia(X,'Slide e dimostrazione'),and(),1,1).
+rule(12,metodologia(X,'Interdisciplinarita' e simulazione'),and(),1,1).
+rule(13,metodologia(X,'Problem solving e simulazione'),and(),1,1).
+
+rule(36,is(X,doc_multimediale),and([is(X, multimediale), libri(X, Ebook)]),1,1).
+rule(37,is(X,correlati),and([is(X, studio_analitico), is(X, documento)]),1,1).
+rule(38,is(X,spiegazione_efficace),and( [ is(X, doc_supporto), or( [ tipo_libri(X, Audiolibri), podcast_e_musica(X, Vero) ] ) ] ),1,1).
+
+/* Definitions of intermediate rules */
+rule(14,is(X,multimediale),and([podcast_e_musica(X, Vero)]),1,1).
+rule(16,is(X,multimediale),and([tipo_libri(X, Audiolibri)]),1,1).
+rule(18,is(X,documento),and([tipo_libri(X, Documenti)]),1,1).
+rule(19,is(X,documento),and([tipo_materie(X, Umanistiche)]),1,1).
+rule(20,is(X,documento),or([approfondimento(X, Si)], approfondimento(X, A_volte)]),1,1).
+rule(21,is(X,doc_supporto),and([colori(X, Vero)]),1,1).
+rule(22,is(X,doc_supporto),and([appunti(X, Prendere_appunti)]),1,1).
+rule(23,is(X,studio_pratico),and([verifiche(X, Settimanali)]),1,1).
+rule(24,is(X,studio_pratico),and([esercizi(X, Studenti)]),1,1).
+rule(25,is(X,studio_pratico),and([tipo_materie(X, Scientifiche)]),1,1).
+rule(26,is(X,studio_pratico),and([interventi(X, Vero)]),1,1).
+rule(27,is(X,studio_pratico),and([verifiche(X, Settimanali)]),1,1).
+rule(28,is(X,studio_guidato),and([esercizi(X, Studenti)]),1,1).
+rule(29,is(X,studio_guidato),and([tipo_materie(X, Scientifiche)]),1,1).
+rule(30,is(X,studio_guidato),and([interventi(X, Vero)]),1,1).
+rule(31,is(X,studio_guidato),or([domande_topic(X, Si)], domande_topic(X, A_volte)]),1,1).
+rule(32,is(X,studio_guidato),and([indovinello(X, Dario)]),1,1).
+rule(33,is(X,studio_guidato),and([interazione(X, Vero)]),1,1).
+rule(34,is(X,studio_analitico),and([indovinello(X, Dario)]),1,1).
+rule(35,is(X,studio_analitico),or([approfondimento(X, Si)], approfondimento(X, A_volte)]),1,1).
+
+
+
+
+
+
+
+
+
