@@ -1,16 +1,16 @@
 :- prolog_flag(unknown,_,fail).
 
-askablemenu(colors(X,Y), ‘Quando studi tendi a sottolineare i concetti fondamentali con vari colors?',[Vero, Falso],colors,X,Y).
+askablemenu(colors(X,Y), ‘Quando studi tendi a sottolineare i concetti fondamentali con vari colori?',[Si, No],colors,X,Y).
 askablemenu(questions_topic(X,Y), ‘Al termine dello studio chiedi ad altre persone di porti delle domande sull’argomento studiato?',[Si, No, A_volte],questions_topic,X,Y).
 askablemenu(subject_type(X,Y), 'Preferisci materie umanistiche o scientifiche?',[Umanistiche, Scientifiche],subject_type, X,Y).
-askablemenu(audio(X,Y), ‘Ascolti podcast e musica?',[Vero,Falso],audio,X,Y).
-askablemenu(experts(X,Y), ‘Credi che siano utili experts di specialisti?'[Vero,Falso],experts,X,Y).
-askablemenu(deepening(X,Y), ‘Quando studi un argomento di solito sei interessato ad approfondire tale argomento?',[Si, No, A_volte],deepening,X,Y).
-askablemenu(interaction(X,Y), 'Durante la spiegazione del docente sei propenso a interagire con lui e a fare domande?',[Vero,Falso],interaction,X,Y).
-askablemenu(period_test(X,Y), 'Preferisci le period_test settimanali o semestrali?',[Settimanali,Semestrali],period_test,X,Y).
-askablemenu(book(X,Y), ‘Preferisci i book cartacei o gli ebook?',[Cartacei, Ebook],book,X,Y).
-askablemenu(book_type(X,Y), ‘Preferisci book cartacei/documenti o audiobook?,[Documenti,Audiobook],book_type,X,Y).
-askablemenu(exercise(X,Y), ‘Durante lo svolgimento degli exercise in classe preferisci che li svolga il docente o gli studenti?',[Docente, Studenti],exercise,X,Y).
+askablemenu(audio(X,Y), ‘Ascolti podcast e musica?',[Si, No],audio,X,Y).
+askablemenu(experts(X,Y), ‘Credi che siano utili inverventi di specialisti?'[Si, No],experts,X,Y).
+askablemenu(deepening(X,Y), ‘Quando studi un argomento di solito sei interessato ad approfondirlo?',[Si, No, A_volte],deepening,X,Y).
+askablemenu(interaction(X,Y), 'Durante la spiegazione del docente sei propenso a interagire con lui e a fare domande?',[Si, No],interaction,X,Y).
+askablemenu(period_test(X,Y), 'Preferisci le verifiche settimanali o semestrali?',[Settimanali,Semestrali],period_test,X,Y).
+askablemenu(book(X,Y), ‘Preferisci i libri cartacei o gli eBook?',[Cartacei, Ebook],book,X,Y).
+askablemenu(book_type(X,Y), ‘Preferisci libri cartacei/documenti o audiobook?,[Documenti,Audiobook],book_type,X,Y).
+askablemenu(exercise(X,Y), ‘Durante lo svolgimento degli esercizi in classe preferisci che li svolga il docente o gli studenti?',[Docente, Studenti],exercise,X,Y).
 askablemenu(computer(X,Y), ‘Quanto spesso usi il computer?',[Ogni_giorno, Ogni_tre_giorni, nessuno_tra_queste],computer,X,Y).
 askablemenu(enigma(X,Y), ‘Il cadavere di una donna è ancora riverso sul marciapiede. Ci sono quattro uomini indiziati per l’omicidio. Alle prime domande della polizia rispondono:
 ANTONIO: “Ho visto Carlo e Dario sul luogo del delitto, quindi uno di loro è l’assassino.”
@@ -18,22 +18,22 @@ BERNARDO: “Non sono stato io.”
 CARLO: “E’ stato Dario. L’ho visto sparare!”
 DARIO: “E’ stato Bernardo. L’ho visto mentre fuggiva.”
 Se solo l’assassino ha mentito, chi è il colpevole?',[Antonio, Bernardo, Carlo, Dario],enigma,X,Y).
-askablemenu(notes(X,Y), ‘Durante la lezione, preferisci seguire attivamente ciò che dice l'insegnate o prendere notes?',[Seguire_attivamente, Prendere_notes],notes,X,Y).
-askablemenu(movie(X,Y), ‘Ti piacciono i movie tratti da storie/situazioni vere?',[Si, No],movie,X,Y).
+askablemenu(notes(X,Y), ‘Durante la lezione, preferisci seguire attivamente ciò che dice l'insegnate o prendere appunti?',[Seguire_attivamente, Prendere_notes],notes,X,Y).
+askablemenu(movie(X,Y), ‘Ti piacciono i film tratti da storie/situazioni vere?',[Si, No],movie,X,Y).
 
-rule(1,metodologia(X,'Video e approccio tutoriale'),and([is(X,video_explanation), is(X,test_explanation)]),1,1).
-rule(2,metodologia(X,'Video e simulazione'),and([is(X,video_explanation), is(X,practical_learning), not([is(X,guided_learning)])]),1,1).
-rule(3,metodologia(X,'Audio e approccio tutoriale'),and([is(X,audio_explanation), is(X,test_explanation)]),1,1).
-rule(4,metodologia(X,'Audio e simulazione'),and([and([is(X,audio_explanation), is(X,practical_learning), not([is(X,guided_learning)])]),1,1).
-rule(5,metodologia(X,'Video e dimostrazione'),and([is(X,video_explanation), is(X,guided_learning), is(X,practical_learning)]),1,1).
-rule(6,metodologia(X,'Mappe e approccio tutoriale'),and([is(X,key_doc), is(X,test_explanation)]),1,1).
-rule(7,metodologia(X,'book cartacei e approccio tutoriale'),and([is(X,document), is(X,test_explanation), not([is(X,multimedia_doc)])]),1,1).
-rule(8,metodologia(X,'Documenti digitali e dimostrazione'),and([is(X,document), is(X,multimedia_doc), is(X,guided_learning), is(X,practical_learning)]),1,1).
-rule(9,metodologia(X,'Documenti digitali e approccio tutoriale'),and([is(X,document), is(X,multimedia_doc), is(X,test_explanation)]),1,1).
-rule(10,metodologia(X,'Slide e approccio tutoriale'),and([is(X,multimedia_doc), is(X,test_explanation)]),1,1).
-rule(11,metodologia(X,'Slide e dimostrazione'),and([is(X,multimedia_doc), is(X,guided_learning), is(X,practical_learning)]),1,1).
-rule(12,metodologia(X,'Interdisciplinarita' e simulazione'),and([is(X,deep_learning), is(X,practical_learning), not([is(X,guided_learning)])]),1,1).
-rule(13,metodologia(X,'Problem solving e simulazione'),and([is(X,analitic_learning), is(X,practical_learning), not([is(X,guided_learning)])]),1,1).
+rule(1,method(X,'Video e approccio tutoriale'),and([is(X,video_explanation), is(X,test_explanation)]),1,1).
+rule(2,method(X,'Video e simulazione'),and([is(X,video_explanation), is(X,practical_learning), not([is(X,guided_learning)])]),1,1).
+rule(3,method(X,'Audio e approccio tutoriale'),and([is(X,audio_explanation), is(X,test_explanation)]),1,1).
+rule(4,method(X,'Audio e simulazione'),and([and([is(X,audio_explanation), is(X,practical_learning), not([is(X,guided_learning)])]),1,1).
+rule(5,method(X,'Video e dimostrazione'),and([is(X,video_explanation), is(X,guided_learning), is(X,practical_learning)]),1,1).
+rule(6,method(X,'Mappe e approccio tutoriale'),and([is(X,key_doc), is(X,test_explanation)]),1,1).
+rule(7,method(X,'Libri cartacei e approccio tutoriale'),and([is(X,document), is(X,test_explanation), not([is(X,multimedia_doc)])]),1,1).
+rule(8,method(X,'Documenti digitali e dimostrazione'),and([is(X,document), is(X,multimedia_doc), is(X,guided_learning), is(X,practical_learning)]),1,1).
+rule(9,method(X,'Documenti digitali e approccio tutoriale'),and([is(X,document), is(X,multimedia_doc), is(X,test_explanation)]),1,1).
+rule(10,method(X,'Slide e approccio tutoriale'),and([is(X,multimedia_doc), is(X,test_explanation)]),1,1).
+rule(11,method(X,'Slide e dimostrazione'),and([is(X,multimedia_doc), is(X,guided_learning), is(X,practical_learning)]),1,1).
+rule(12,method(X,'Interdisciplinarita' e simulazione'),and([is(X,deep_learning), is(X,practical_learning), not([is(X,guided_learning)])]),1,1).
+rule(13,method(X,'Problem solving e simulazione'),and([is(X,analitic_learning), is(X,practical_learning), not([is(X,guided_learning)])]),1,1).
 
 rule(14,is(X,multimedia_doc),and([is(X, multimedia), book(X,Ebook)]),1,1).
 rule(15,is(X,key_doc),and([is(X, analitic_learning), is(X, document)]),1,1).
