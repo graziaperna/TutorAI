@@ -1,5 +1,6 @@
 :- prolog_flag(unknown,_,fail).
 
+
 askablemenu(colors(X,Y), ‘Quando studi tendi a sottolineare i concetti fondamentali con vari colori?',[Si, No],colors,X,Y).
 askablemenu(questions_topic(X,Y), ‘Al termine dello studio chiedi ad altre persone di porti delle domande sull’argomento studiato?',[Si, No, A_volte],questions_topic,X,Y).
 askablemenu(subject_type(X,Y), 'Preferisci materie umanistiche o scientifiche?',[Umanistiche, Scientifiche],subject_type, X,Y).

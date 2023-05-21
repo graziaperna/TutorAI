@@ -16,6 +16,7 @@ public class Utility {
 		result.add(new ClassPanelEAT26());
 		result.add(new ClassPanelBES());
 		result.add(new ClassPanelSwap());
+		result.add(new ClassPanelTutor());
 		return result;
 	}
 	
