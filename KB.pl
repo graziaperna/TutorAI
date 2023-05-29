@@ -33,6 +33,7 @@ askablemenu(lessons_type(X,Y), 'Preferisci seguire le lezioni online o in presen
 askablemenu(exercise_place(X,Y), 'Preferisci svolgere gli esercizi in classe o a casa?',[in_classe, a_casa],exercise_place,X,Y).
 
 
+
 rule(1,method(X,'Cooperative learning e simulazione'),and([is(X,collective_preparation),is(X,practical_learning), not([is(X,guided_learning)])]),1,1).
 rule(2,method(X,'Cooperative learning e approccio tutoriale'),and([is(X,collective_preparation),is(X,test_explanation)]),1,1).
 rule(3,method(X,'Video e approccio tutoriale'),and([is(X,video_explanation), is(X,test_explanation)]),1,1).
@@ -51,73 +52,87 @@ rule(15,method(X,'Problem solving e simulazione'),and([is(X,analitic_learning), 
 
 rule(16,is(X,multimedia_doc),and([is(X, paper_study), is(X, digital)]),1,1).
 rule(17,is(X,multimedia_doc),and([is(X, sample_multimedial), is(X, digital)]),1,1).
-rule(18,is(X,key_doc),and([is(X, paper_study), is(X, logic_linking), is(X, sample_multimedial)]),1,1).
-rule(19,is(X,test_explanation),and([is(X, supported_learning), is(X, digital)]),1,1).
-rule(20,is(X,test_explanation),and([is(X, digital), is(X, paper_study)]),1,1).
-rule(21,is(X,video_explanation),and([is(X, supported_learning), is(X,sample_multimedial)]),1,1).
-rule(22,is(X,video_explanation),and([is(X, digital), is(X,supported_learning)]),1,1).
-rule(23,is(X,deep_learning),and([is(X, logic_linking), is(X, sample_multimedial)]),1,1).
-rule(24,is(X,deep_learning),and([is(X, paper_study), is(X, logic_linking)]),1,1).
-rule(25,is(X,audio_explanation),and([is(X, sample_multimedial), is(X, digital), is(X, supported_learning)]),1,1).
-rule(26,is(X,collective_preparation),and([is(X,supported_learning), is(X,help_study)]),1,1).
-rule(27,is(X,collective_preparation),and([is(X,paper_study), is(X,help_study)]),1,1).
+rule(18,is(X,multimedia_doc),and([is(X, sample_multimedial), is(X, digital), is(X, supported_learning)]),1,1).
+rule(19,is(X,multimedia_doc),and([is(X, paper_study), is(X, digital), is(X, supported_learning)]),1,1).
+rule(20,is(X,multimedia_doc),and([is(X, sample_multimedial), is(X, digital), is(X, supported_learning), is(X, paper_study)]),1,1).
+rule(21,is(X,key_doc),and([is(X, paper_study), is(X, logic_linking), is(X, sample_multimedial), is(X, step_study)]),1,1).
+rule(22,is(X,key_doc),and([is(X, step_study), is(X, logic_linking), is(X, sample_multimedial)]),1,1).
+rule(23,is(X,test_explanation),and([is(X, digital), is(X, paper_study)]),1,1).
+rule(24,is(X,video_explanation),and([is(X, supported_learning), is(X,sample_multimedial)]),1,1).
+rule(25,is(X,video_explanation),and([is(X, digital), is(X,supported_learning)]),1,1).
+rule(26,is(X,deep_learning),and([is(X, logic_linking), is(X, sample_multimedial)]),1,1).
+rule(27,is(X,deep_learning),and([is(X, paper_study), is(X, logic_linking)]),1,1).
+rule(28,is(X,audio_explanation),and([is(X, sample_multimedial), is(X, digital), is(X, supported_learning)]),1,1).
+rule(29,is(X,collective_preparation),and([is(X,supported_learning), is(X,help_study)]),1,1).
+rule(30,is(X,collective_preparation),and([is(X,paper_study), is(X,help_study)]),1,1).
 
-rule(28,is(X,sample_multimedial),and([is(X, multimedia), is(X, sample_doc)]),1,1).
-rule(29,is(X,supported_learning),and([is(X, guided_learning), is(X, practical_learning)]),1,1).
-rule(30,is(X,supported_learning),and([is(X, guided_learning), is(X, practical_learning), is(X, multimedia)]),1,1).
-rule(31,is(X,digital),and([is(X, multimedia)]),1,1).
-rule(32,is(X,digital),and([is(X, visual)]),1,1).
-rule(33,is(X,step_study),and([is(X, logical_mind), is(X, practical_learning)]),1,1).
-rule(34,is(X,logic_linking),and([is(X, logical_mind), is(X, analitic_learning)]),1,1).
-rule(35,is(X,logic_linking),and([is(X, logical_mind), is(X, analitic_learning), is(X,sample_doc)]),1,1).
-rule(36,is(X,paper_study),and([is(X, document), is(X, sample_doc)]),1,1).
-rule(37,is(X,paper_study),and([is(X, document), is(X, sample_doc), is(X, analitic_learning)]),1,1).
-rule(38,is(X,help_study),and([is(X, guided_learning), is(X, group_learning)]),1,1).
+rule(31,is(X,sample_multimedial),and([is(X, multimedia), is(X, sample_doc)]),1,1).
+rule(32,is(X,sample_multimedial),and([is(X, document), is(X, sample_doc)]),1,1).
+rule(33,is(X,supported_learning),and([is(X, guided_learning), is(X, practical_learning)]),1,1).
+rule(34,is(X,supported_learning),and([is(X, guided_learning), is(X, practical_learning), is(X, multimedia)]),1,1).
+rule(35,is(X,supported_learning),and([is(X, guided_learning), is(X, practical_learning), is(X, group_learning)]),1,1).
+rule(36,is(X,supported_learning),and([is(X, guided_learning), is(X, practical_learning), is(X, group_learning), is(X, multimedia)]),1,1).
+rule(37,is(X,digital),and([is(X, multimedia), is(X, sample_doc), is(X, visual)]),1,1).
+rule(38,is(X,digital),and([is(X, visual)]),1,1).
+rule(39,is(X,step_study),and([is(X, logical_mind), is(X, practical_learning)]),1,1).
+rule(40,is(X,step_study),and([is(X, analitic_learning), is(X, practical_learning)]),1,1).
+rule(41,is(X,step_study),and([is(X, analitic_learning), is(X, guided_learning)]),1,1).
+rule(42,is(X,step_study),and([is(X, logical_mind), is(X, guided_learning)]),1,1).
+rule(43,is(X,logic_linking),and([is(X, logical_mind), is(X, analitic_learning)]),1,1).
+rule(44,is(X,logic_linking),and([is(X, logical_mind), is(X, analitic_learning), is(X,sample_doc)]),1,1).
+rule(45,is(X,paper_study),and([is(X, document), is(X, sample_doc)]),1,1).
+rule(46,is(X,paper_study),and([is(X, document), is(X, sample_doc), is(X, analitic_learning)]),1,1).
+rule(47,is(X,help_study),and([is(X, guided_learning), is(X, group_learning)]),1,1).
+rule(48,is(X,help_study),and([is(X, guided_learning), is(X, group_learning), is(X, multimedia)]),1,1).
+rule(49,is(X,help_study),and([is(X, guided_learning), is(X, group_learning), is(X, document)]),1,1).
+rule(50,is(X,help_study),and([is(X, guided_learning), is(X, group_learning), is(X, sample_doc)]),1,1).
 
 /* Definitions of intermediate rules */
-rule(39,is(X,multimedia),and([audio(X, si)]),1,1).
-rule(40,is(X,multimedia),and([book_type(X, audiobook)]),1,1).
-rule(41,is(X,multimedia),and([movie(X, si)]),1,1).
-rule(42,is(X,multimedia),and([videogames(X, si)]),1,1).
-rule(43,is(X,multimedia),and([lessons_type(X, online)]),1,1).
-rule(44,is(X,multimedia),and([notes(X, prendere_notes), (X, computer)]),1,1).
-rule(45,is(X,document),and([book_type(X, documenti)]),1,1).
-rule(46,is(X,document),and([subject_type(X, umanistiche)]),1,1).
-rule(47,is(X,document),or([deepening(X, si), deepening(X, a_volte)]),1,1).
-rule(48,is(X,document),or([books_quantity(X, almeno_1_al_mese), books_quantity(X, uno_ogni_2_mesi)]),1,1).
-rule(49,is(X,document),and([notes(X, prendere_notes), notes_type(X, quaderno)]),1,1).
-rule(50,is(X,sample_doc),and([colors(X, si)]),1,1).
-rule(51,is(X,sample_doc),and([notes(X, prendere_notes)]),1,1).
-rule(52,is(X,practical_learning),and([period_test(X, settimanali)]),1,1).
-rule(53,is(X,practical_learning),and([exercise(X, studenti)]),1,1).
-rule(54,is(X,practical_learning),and([subject_type(X, scientifiche)]),1,1).
-rule(55,is(X,practical_learning),and([experts(X, si)]),1,1).
-rule(56,is(X,practical_learning),and([guided_visits(X, si)]),1,1).
-rule(57,is(X,practical_learning),and([exercise_place(X, a_casa)]),1,1).
-rule(58,is(X,guided_learning),and([exercise(X, studenti)]),1,1).
-rule(59,is(X,guided_learning),and([subject_type(X, scientifiche)]),1,1).
-rule(60,is(X,guided_learning),and([experts(X, si)]),1,1).
-rule(61,is(X,guided_learning),or([questions_topic(X, si), questions_topic(X, a_volte)]),1,1).
-rule(62,is(X,guided_learning),and([enigma(X, dario)]),1,1).
-rule(63,is(X,guided_learning),and([interaction(X, si)]),1,1).
-rule(64,is(X,guided_learning),and([group_study(X, in_compagnia)]),1,1).
-rule(65,is(X,guided_learning),and([exercise_place(X, in_classe)]),1,1).
-rule(66,is(X,analitic_learning),and([enigma(X, si)]),1,1).
-rule(67,is(X,analitic_learning),or([deepening(X, si), deepening(X, a_volte)]),1,1).
-rule(68,is(X,visual),and([colors(X, si)]),1,1).
-rule(69,is(X,visual),and([movie(X, si)]),1,1).
-rule(70,is(X,visual),and([book_type(X, documenti)]),1,1).
-rule(71,is(X,visual),and([videogames(X, si)]),1,1).
-rule(72,is(X,visual),or([books_quantity(X, almeno_1_al_mese), books_quantity(X, uno_ogni_2_mesi)]),1,1).
-rule(73,is(X,visual),or([computer(X, ogni_giorno), computer(X, ogni_tre_giorni)]),1,1).
-rule(74,is(X,visual),and([lessons_type(X, online)]),1,1).
-rule(75,is(X,logical_mind),and([subject_type(X, scientifiche)]),1,1).
-rule(76,is(X,group_learning),and([group_study(X, in_compagnia)]),1,1).
-rule(77,is(X,group_learning),and([group_divergences(X, ne_discutiamo_in_modo_costruttivo_valutando_i_pro_e_i_contro)]),1,1).
-rule(78,is(X,group_learning),and([group_problem(X, cercherei_di_risolvere_la_situazione)]),1,1).
-rule(79,is(X,group_learning),and([group_sports(X, di_gruppo)]),1,1).
-rule(80,is(X,group_learning),and([questions_topic(X, si), questions_topic(X, a_volte)]),1,1).
-rule(81,is(X,group_learning),and([exercise(X, studenti)]),1,1).
+rule(51,is(X,multimedia),and([audio(X, si)]),1,1).
+rule(52,is(X,multimedia),and([book_type(X, audiobook)]),1,1).
+rule(53,is(X,multimedia),and([movie(X, si)]),1,1).
+rule(54,is(X,multimedia),and([videogames(X, si)]),1,1).
+rule(55,is(X,multimedia),and([lessons_type(X, online)]),1,1).
+rule(56,is(X,multimedia),and([notes(X, prendere_notes), (X, computer)]),1,1).
+rule(57,is(X,document),and([book_type(X, documenti)]),1,1).
+rule(58,is(X,document),and([subject_type(X, umanistiche)]),1,1).
+rule(59,is(X,document),or([deepening(X, si), deepening(X, a_volte)]),1,1).
+rule(60,is(X,document),or([books_quantity(X, almeno_1_al_mese), books_quantity(X, uno_ogni_2_mesi)]),1,1).
+rule(61,is(X,document),and([notes(X, prendere_notes), notes_type(X, quaderno)]),1,1).
+rule(62,is(X,sample_doc),and([colors(X, si)]),1,1).
+rule(63,is(X,sample_doc),and([notes(X, prendere_notes)]),1,1).
+rule(64,is(X,sample_doc),and([notes(X, prendere_notes), colors(X, si)]),1,1).
+rule(65,is(X,practical_learning),and([period_test(X, settimanali)]),1,1).
+rule(66,is(X,practical_learning),and([exercise(X, studenti)]),1,1).
+rule(67,is(X,practical_learning),and([experts(X, si)]),1,1).
+rule(68,is(X,practical_learning),and([guided_visits(X, si)]),1,1).
+rule(69,is(X,practical_learning),and([exercise_place(X, a_casa)]),1,1).
+rule(70,is(X,guided_learning),and([exercise(X, studenti)]),1,1).
+rule(71,is(X,guided_learning),and([subject_type(X, scientifiche)]),1,1).
+rule(72,is(X,guided_learning),and([experts(X, si)]),1,1).
+rule(73,is(X,guided_learning),or([questions_topic(X, si), questions_topic(X, a_volte)]),1,1).
+rule(74,is(X,guided_learning),and([enigma(X, dario)]),1,1).
+rule(75,is(X,guided_learning),and([interaction(X, si)]),1,1).
+rule(76,is(X,guided_learning),and([group_study(X, in_compagnia)]),1,1).
+rule(77,is(X,guided_learning),and([exercise_place(X, in_classe)]),1,1).
+rule(78,is(X,analitic_learning),and([enigma(X, si)]),1,1).
+rule(79,is(X,analitic_learning),or([deepening(X, si), deepening(X, a_volte)]),1,1).
+rule(80,is(X,visual),and([colors(X, si)]),1,1).
+rule(81,is(X,visual),and([movie(X, si)]),1,1).
+rule(82,is(X,visual),and([book_type(X, documenti)]),1,1).
+rule(83,is(X,visual),and([videogames(X, si)]),1,1).
+rule(84,is(X,visual),or([books_quantity(X, almeno_1_al_mese), books_quantity(X, uno_ogni_2_mesi)]),1,1).
+rule(85,is(X,visual),or([computer(X, ogni_giorno), computer(X, ogni_tre_giorni)]),1,1).
+rule(86,is(X,visual),and([lessons_type(X, online)]),1,1).
+rule(87,is(X,logical_mind),and([subject_type(X, scientifiche)]),1,1).
+rule(88,is(X,logical_mind),and([subject_type(X, scientifiche),enigma(X, dario)]),1,1).
+rule(89,is(X,group_learning),and([group_study(X, in_compagnia)]),1,1).
+rule(90,is(X,group_learning),and([group_divergences(X, ne_discutiamo_in_modo_costruttivo_valutando_i_pro_e_i_contro)]),1,1).
+rule(91,is(X,group_learning),and([group_problem(X, cercherei_di_risolvere_la_situazione)]),1,1).
+rule(92,is(X,group_learning),and([group_sports(X, di_gruppo)]),1,1).
+rule(93,is(X,group_learning),and([questions_topic(X, si), questions_topic(X, a_volte)]),1,1).
+rule(94,is(X,group_learning),and([exercise(X, studenti)]),1,1).
+
 
 
 
