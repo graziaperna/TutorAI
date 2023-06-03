@@ -17,6 +17,7 @@ public class Utility {
 		result.add(new ClassPanelBES());
 		result.add(new ClassPanelSwap());
 		result.add(new ClassPanelTutor());
+		result.add(new KBHistory());
 		return result;
 	}
 	
