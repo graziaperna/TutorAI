@@ -56,7 +56,7 @@ rule(ps_at,method(X,'Problem solving e approccio tutoriale'),and([is(X,logical_r
 rule(multimedia_doc_1,is(X,multimedia_doc),and([is(X,sample_multimedial), is(X,digital), is(X,supported_learning)]),1,1).
 rule(multimedia_doc_2,is(X,multimedia_doc),and([is(X,paper_study), is(X,digital), is(X,supported_learning)]),1,1).
 rule(key_doc_1,is(X,key_doc),and([is(X,paper_study), is(X,logic_linking), is(X,sample_multimedial), is(X,step_study)]),1,1).
-rule(test_explanation_1,is(X,test_explanation),and([is(X,digital), is(X,((key, value) -> System.out.println(value + ":" + key)) paper_study)]),1,1).
+rule(test_explanation_1,is(X,test_explanation),and([is(X,digital), is(X,paper_study)]),1,1).
 rule(video_explanation_1,is(X,video_explanation),and([is(X,supported_learning), is(X,sample_multimedial)]),1,1).
 rule(video_explanation_2,is(X,video_explanation),and([is(X,digital), is(X,supported_learning)]),1,1).
 rule(deep_learning_1,is(X,deep_learning),and([is(X,logic_linking), is(X,sample_multimedial)]),1,1).
@@ -117,7 +117,7 @@ rule(visual_3,is(X,visual),and([book_type(X,documenti)]),1,1).
 rule(visual_4,is(X,visual),and([videogames(X,si)]),1,1).
 rule(visual_5,is(X,visual),or([books_quantity(X,almeno_1_al_mese), books_quantity(X,uno_ogni_2_mesi)]),1,1).
 rule(visual_6,is(X,visual),or([computer(X,ogni_giorno), computer(X,ogni_tre_giorni)]),1,1).
-rule(visual_7,is(X,visual),and([lessons_type(X,online)]),1,1).dario
+rule(visual_7,is(X,visual),and([lessons_type(X,online)]),1,1).
 rule(logical_mind_1,is(X,logical_mind),and([subject_type(X,scientifiche),enigma(X,dario)]),1,1).
 rule(group_learning_1,is(X,group_learning),and([group_study(X,in_compagnia)]),1,1).
 rule(group_learning_2,is(X,group_learning),and([group_divergences(X,ne_discutiamo_in_modo_costruttivo_valutando_i_pro_e_i_contro)]),1,1).

@@ -74,21 +74,17 @@ public class KBHistory extends GenericPanel{
 
 	List<String> tree = new ArrayList<>();
 	String fileContent = "";
-	JDialog dialog = new JDialog();
 	
 public KBHistory() {
 	super("KB History");
 	JPanel KBHistory = new JPanel();
 	JButton btnUpload = new JButton("Carica KB");
-	JButton btnShowTree = new JButton("Visualizza Percorso");
 	DefaultListModel<String> myList = new DefaultListModel();
     JList<String> list = new JList<>(myList);
 	
 	add(KBHistory);
     add(btnUpload);
     //add(btnShowTree);
-    
-    btnShowTree.setVisible(false);
     
     btnUpload.addActionListener(new ActionListener() {
 		public void actionPerformed(ActionEvent event) {
@@ -115,7 +111,6 @@ public KBHistory() {
 			              fileContent = sb.toString();
 			              
 			              btnUpload.setVisible(false);
-			              btnShowTree.setVisible(true);
 			              add(list);
 			          }catch (Exception e) {
 			          e.printStackTrace();
@@ -142,22 +137,13 @@ public KBHistory() {
 			    List<String> ruleHistory = null;
 			    String ruleName = "";
 			    
-			    System.out.println(list.getModel().getElementAt(selectedIx[0]));
-			    
 			    ruleName = list.getModel().getElementAt(selectedIx[0]).split(",(and)?(or)?\\(\\[")[0].substring(list.getModel().getElementAt(selectedIx[0]).split(",(and)?(or)?\\(\\[")[0].indexOf(",")+1, 
 			    		list.getModel().getElementAt(selectedIx[0]).split(",(and)?(or)?\\(\\[")[0].length());
 			    
 			    ruleHistory = makeTree(fileContent, ruleName);
 			    
-			    System.out.println(ruleName);
-			    
-			    DialogTreeHistory panelH = new DialogTreeHistory(ruleHistory);
-		        
-			    dialog.setLayout(new FlowLayout());
-			    dialog.setTitle("Rule History");
-			    dialog.setSize(500, 500);
-			    dialog.add(panelH);
-			    dialog.setVisible(true);
+			    RuleHistoryDialog d = new RuleHistoryDialog(ruleHistory);
+			    d.setVisible(true);
 			}
 			
 			@Override
@@ -182,14 +168,10 @@ public KBHistory() {
 	}
 
 	public List<String> makeTree(String content, String selectedRule) {
-		File f = new File("KB.pl");
 		LinkedHashMap<Integer, String> map = new LinkedHashMap<>();
+		LinkedHashMap<String, Integer> treeList = new LinkedHashMap<>();
 		List<String> graphList = new ArrayList<>();
-		HashSet<String> treeList = new HashSet<>();
-		String res = "<html>";
 		List<String> resList = new ArrayList<>();
-		
-		System.out.println(content.split("rule")[3]);
 		
 		String[] rules = content.split("rule");
 		
@@ -198,15 +180,9 @@ public KBHistory() {
 			String s = content.split("rule")[i+3].split(",(and)?(or)?\\(\\[")[0].substring(content.split("rule")[i+3].split(",(and)?(or)?\\(\\[")[0].indexOf(",")+1, 
 					content.split("rule")[i+3].split(",(and)?(or)?\\(\\[")[0].length());
 			
-			//System.out.println(i + ": " + s);
-			
 			graphList.add("");
 			map.put(i, s);
 		}
-
-		map.forEach((key, value) -> System.out.println(value + ":" + key));
-		
-		System.out.println(content.split("rule")[17]);
 		
 		for (Map.Entry<Integer, String> entry : map.entrySet()) {
 			for(int j=0;j<rules.length-3;j++) {
@@ -216,28 +192,22 @@ public KBHistory() {
 			}
 		}
 		
-		graphList.forEach(s -> System.out.println(s));
-		
 		for(int i=0;i<map.size();i++) {
 			getTree(map, graphList, i, "");
 		}
 		
-		treeList.addAll(tree);
+		tree.forEach(i -> System.out.println(i));
 		
-		//tree.forEach(i -> System.out.println(i));
-		//System.out.println(treeList.get(treeList.size()-1).split("->").length);
-		treeList.forEach(i -> System.out.println(i));
-		
-		for(String s : treeList) {
-			String[] split = s.split("->");
-			if(split.length>2 && split[split.length-1].indexOf(selectedRule)!=-1) {
-				resList.add(s);
-				res = res + s + "<br>";
-				System.out.println(s);
-			}
+		for(int i=0;i<tree.size();i++) {
+			treeList.put(tree.get(i), i);
 		}
 		
-		res = res + "</html>";
+		treeList.forEach((key, value) -> {
+				String[] split = key.split("->");
+				if(split.length>2 && split[split.length-1].indexOf(selectedRule)!=-1) {
+					resList.add(key);
+				}
+			});
 		
 		return resList;
 	}
@@ -247,8 +217,6 @@ public KBHistory() {
 			List<Integer> row = new ArrayList<>();
 			
 			String[] s = null;
-			
-			//System.out.println(graphList.get(i));
 			
 			if(graphList.get(i).compareTo("\0")!=0)
 				s = graphList.get(i).split(",");
