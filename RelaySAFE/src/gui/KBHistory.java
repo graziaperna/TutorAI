@@ -196,15 +196,13 @@ public KBHistory() {
 			getTree(map, graphList, i, "");
 		}
 		
-		tree.forEach(i -> System.out.println(i));
-		
 		for(int i=0;i<tree.size();i++) {
 			treeList.put(tree.get(i), i);
 		}
 		
 		treeList.forEach((key, value) -> {
 				String[] split = key.split("->");
-				if(split.length>2 && split[split.length-1].indexOf(selectedRule)!=-1) {
+				if(split.length>2 && split[split.length-1].indexOf(selectedRule)!=-1 && key.indexOf(map.get(0).split("\\(")[0])!=-1) {
 					resList.add(key);
 				}
 			});
