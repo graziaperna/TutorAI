@@ -34,7 +34,6 @@ public class GenericPanel extends JPanel {
 		rw.resetKnowledge(currentRunFacts);
 		rw.resetKnowledge(currentRunKnowledge);
 		rw.resetExamples();
-		System.out.println(currentRunFacts);
 	}
 	
 	public GenericPanel() {

@@ -55,6 +55,7 @@ import java.awt.BorderLayout;
 import javax.swing.SpringLayout;
 import javax.swing.JInternalFrame;
 import javax.swing.BoxLayout;
+import net.miginfocom.swing.MigLayout;
 import javax.swing.border.BevelBorder;
 import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;

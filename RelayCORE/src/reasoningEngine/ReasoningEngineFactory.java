@@ -43,7 +43,6 @@ public class ReasoningEngineFactory implements IPoolableObjectFactory<ReasoningE
 
 		if (yapPath == null) {
 			yapPath = System.getProperty("YAP_PATH");
-			System.out.println(yapPath);
 			if (yapPath == null) {
 				URL url = Thread.currentThread().getContextClassLoader()
 						.getResource(REASONING_PROPERTIES_FILE);
